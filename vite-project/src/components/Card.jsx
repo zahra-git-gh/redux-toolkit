@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FilterButton } from "./filterBtn";
 
 export function Card({ data, conditionsArr }) {
@@ -29,9 +30,12 @@ export function Card({ data, conditionsArr }) {
             ""
           )}
 
-          <h2 className="cursor-pointer hover:text-[#5ba4a4] font-bold text-[#2c3a3a] text-xl mt-3">
+          <Link
+            to={`/${data.id}`}
+            className="cursor-pointer block hover:text-[#5ba4a4] font-bold text-[#2c3a3a] text-xl mt-3"
+          >
             {data.position}
-          </h2>
+          </Link>
           <p className="font-thin text-sm mt-[5px] text-[#7b8e8e]">
             {data.postedAt} <span>•</span> {data.contract} <span>•</span>{" "}
             {data.location}
@@ -39,20 +43,10 @@ export function Card({ data, conditionsArr }) {
         </div>
       </div>
       <div className="py-3.5 mx-6 flex flex-wrap border-t gap-y-3 gap-x-3 md:items-center md:border-t-0 md:w-[250px] md:justify-end min-[1120px]:w-[555px]">
-        {/* <button className="bg-[#eef6f6] h-max py-1 px-2 rounded-md font-medium text-[#5ba4a4] hover:bg-[#5ba4a4] hover:text-[#eef6f6]">
-          CSS
-        </button>
-        <button className="bg-[#eef6f6] h-max py-1 px-2 rounded-md font-medium text-[#5ba4a4] hover:bg-[#5ba4a4] hover:text-[#eef6f6]">
-          JAVASCRIPT
-        </button>
-        <button className="bg-[#eef6f6] h-max py-1 px-2 rounded-md font-medium text-[#5ba4a4] hover:bg-[#5ba4a4] hover:text-[#eef6f6]">
-          HARCHI
-        </button> */}
         {conditionsArr.map((str, i) => {
           return <FilterButton text={str} key={i} />;
         })}
       </div>
-      {/* </div> */}
     </div>
   );
 }
